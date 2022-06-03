@@ -10,19 +10,30 @@ public class App {
 
     public static void main(String args[])
     {
+    Order order=null;
+    String name=null;
+    double value=0;
+
+
         try {
             System.out.print("Enter Order Name: ");
-            String name=scanner.nextLine();
+            name=scanner.nextLine();
             System.out.print("Enter Order Value: ");
-            double value=scanner.nextDouble();
-            Order order=new Order(UUID.randomUUID().toString(),name,value);
-            System.out.println(order);
+            value=scanner.nextDouble();
+            System.out.println(order.toString());
 
         }
         catch (InputMismatchException e)
         {
-            System.out.println("please enter double value");
+            System.out.println("please enter double value"+e.toString());
         }
+        catch (NullPointerException np)
+        {
+            System.out.println("order is null"+ np.toString());
+        }
+     //   order=new Order(UUID.randomUUID().toString(),name,value);
+
+
 
     }
 }
