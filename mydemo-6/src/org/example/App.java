@@ -1,5 +1,6 @@
 package org.example;
 
+import javax.lang.model.type.NullType;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.UUID;
@@ -23,15 +24,11 @@ public class App {
             System.out.println(order.toString());
 
         }
-        catch (InputMismatchException e)
+        catch (InputMismatchException   | NullPointerException e)
         {
-            System.out.println("please enter double value"+e.toString());
+            System.out.println(e.toString());
         }
-        catch (NullPointerException np)
-        {
-            System.out.println("order is null"+ np.toString());
-        }
-     //   order=new Order(UUID.randomUUID().toString(),name,value);
+
 
 
 
