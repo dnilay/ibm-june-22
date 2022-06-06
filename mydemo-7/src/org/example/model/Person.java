@@ -10,6 +10,12 @@ public class Person {
     public Person() {
     }
 
+    public Person(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
     public Person(String personId, String firstName, String lastName, String email) {
         this.personId = personId;
         this.firstName = firstName;

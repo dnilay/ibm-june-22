@@ -1,19 +1,18 @@
 package org.example.service;
 
+import com.sun.source.tree.Tree;
 import org.example.model.Person;
 import org.example.service.PersonService;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class PersonServiceImpl implements PersonService {
 
-    private Set<Person> persons;
+    private List<Person> persons;
 
     //default block//similar to default constructor
     {
-        persons=new HashSet<Person>();
+        persons=new ArrayList<>();
     }
 
     @Override
@@ -24,7 +23,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Set<Person> fetchAllPerson() {
+    public List<Person> fetchAllPerson() {
         return persons;
     }
 
@@ -53,6 +52,38 @@ public class PersonServiceImpl implements PersonService {
         }
         else
         {
+            System.out.println("found "+person.getDetails());
+        }
+    }
+
+    @Override
+    public void updatePersonById(String personId,Person person) {
+        Person p=null;
+
+        Iterator<Person> iterator=persons.iterator();
+        boolean flag=false;
+        while (iterator.hasNext())
+        {
+            p=iterator.next();
+
+            if(p.getPersonId().equals(personId))
+            {
+                flag=true;
+
+                break;
+
+            }
+        }
+
+        if (flag==false)
+        {
+            System.out.println("not found. ");
+        }
+        else
+        {
+            p.setEmail(person.getEmail());
+            p.setFirstName(person.getFirstName());
+            p.setLastName(person.getLastName());
             System.out.println("found "+person.getDetails());
         }
     }

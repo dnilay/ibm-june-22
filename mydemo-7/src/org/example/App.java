@@ -20,6 +20,7 @@ public class App {
             System.out.println("1. Create A New Person");
             System.out.println("2. Display All Available Person(s)");
             System.out.println("3. Get A Person By ID: ");
+            System.out.println("4. Update Person by id.");
             System.out.println("0. Exit");
             System.out.print("Enter Your Choice: ");
             choice=scanner.nextInt();
@@ -37,7 +38,7 @@ public class App {
                     service.createPerson(new Person(id,fName,lName,email));
                     break;
                 case 2:
-                    Set<Person> set=service.fetchAllPerson();
+                    List<Person> set=service.fetchAllPerson();
                     if(set.isEmpty())
                     {
                         System.out.println("no person(s) available");
@@ -55,6 +56,11 @@ public class App {
                    service.getPersonById(id);
 
                     break;
+                case 4:
+                    System.out.print("Enter ID: ");
+                    id=scanner.next();
+                    service.updatePersonById(id,new Person("rahul","dravid","rahul@email.com"));
+                    break;
                 case 0:
                     System.exit(0);
                     break;
@@ -65,6 +71,22 @@ public class App {
 
 
         }while (choice!=0);
+
+       /* Set<Integer> set=new TreeSet<Integer>();
+        set.add(11);
+        set.add(10);
+        set.add(-1);
+        set.add(0);
+        set.add(20);
+
+        System.out.println(set);
+        List<Integer>list=new ArrayList<>();
+        list.add(10);
+        list.add(10);
+        list.add(-1);
+        list.add(5);
+        list.add(20);
+        System.out.println(list);*/
 
 
     }
