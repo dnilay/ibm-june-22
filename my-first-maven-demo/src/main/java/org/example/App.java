@@ -1,38 +1,32 @@
 package org.example;
 
+import org.example.dao.PersonDao;
+import org.example.dao.PersonDaoImpl;
+import org.example.model.Person;
+
 import java.sql.*;
+import java.util.List;
 
 public class App
 {
-    public static void main( String[] args )
-    {
 
+    public static void main( String[] args ) throws SQLException {
+        PersonDao personDao=new PersonDaoImpl();
 
         try
         {
-            //step-1
-            //load the driver
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-            //step-2
-            //make the connection with your mysql-server
-            Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root","root");
-            //step-3
-            //create statement object which will help us to execute sql query on behalf of developer
-            Statement statement=connection.createStatement();
-            ResultSet resultSet= statement.executeQuery("select * from person");
-            System.out.println("PERSON_ID\tFIRST_NAME\tLAST_NAME\tAGE\n===========================================\n");
-            while(resultSet.next())
+            List<Person> list=personDao.fetchAllPersons();
+            System.out.println("ID\tFIRST_NAME\tLAST_NAME\tAGE");
+            for(Person p:list)
             {
-                System.out.println(resultSet.getInt("person_id")+"\t"
-                        +resultSet.getString("first_name")+
-                        "\t"+resultSet.getString("last_name")
-                        +"\t"+resultSet.getInt("age"));
+                System.out.println(p);
             }
+
         }
-        catch (SQLException e)
-        {
-            System.err.println(e.toString());
-        }
+       catch (SQLException e)
+       {
+           e.printStackTrace();
+       }
 
     }
 }
