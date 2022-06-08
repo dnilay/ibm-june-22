@@ -8,4 +8,6 @@ import java.util.List;
 public interface PersonDao {
 
     public List<Person> fetchAllPersons() throws SQLException;
+
+    public Person createPerson(Person person) throws SQLException;
 }
