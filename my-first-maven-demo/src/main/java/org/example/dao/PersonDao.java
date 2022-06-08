@@ -10,4 +10,5 @@ public interface PersonDao {
     public List<Person> fetchAllPersons() throws SQLException;
 
     public Person createPerson(Person person) throws SQLException;
+    public Person findById(int id) throws SQLException;
 }

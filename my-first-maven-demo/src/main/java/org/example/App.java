@@ -25,6 +25,7 @@ private static Scanner scanner=new Scanner(System.in);
             do{
                 System.out.println("1. Create A New Person. ");
                 System.out.println("2. Display All Available Person. ");
+                System.out.println("3. Find Person By ID: ");
                 System.out.println("0. Exit. ");
                 System.out.print("Enter Your choice: ");
                 choice=scanner.nextInt();
@@ -49,6 +50,19 @@ private static Scanner scanner=new Scanner(System.in);
                             System.out.println(p);
                         }
                         break;
+                    case 3:
+                        System.out.println("Enter ID: ");
+                        int id= scanner.nextInt();
+                        Person p=personDao.findById(id);
+                        if(p==null)
+                        {
+                            System.out.println("no such id found. ");
+                        }
+                        else
+                        {
+                            System.out.println("id found: "+p);
+                        }
+                        break;
                     case 0:
                         System.exit(0);
                         break;
@@ -61,9 +75,9 @@ private static Scanner scanner=new Scanner(System.in);
 
 
         }
-       catch (SQLException | InputMismatchException e)
+       catch (SQLException | InputMismatchException | ListEmptyException e)
        {
-           e.printStackTrace();
+          System.err.println(e.getMessage());
        }
 
     }
