@@ -58,4 +58,20 @@ public class PersonDaoImpl implements PersonDao {
         }
         return list.get(0);
     }
+
+    @Override
+    public void deletePersonById(int id) throws SQLException {
+        preparedStatement = connection.prepareStatement("delete from person where person_id=?");
+        preparedStatement.setInt(1,id);
+        int reasult= preparedStatement.executeUpdate();
+        if(reasult>0)
+        {
+            System.out.println("deletion successful");
+        }
+
+        else {
+            System.out.println("no such id found: "+id);
+        }
+
+    }
 }

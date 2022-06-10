@@ -13,7 +13,7 @@ public class PersonConnectionFactory {
 
         DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
 
-         connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root","root");
+        connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","root","root");
         return connection;
     }
 }

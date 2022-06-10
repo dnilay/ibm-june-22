@@ -11,4 +11,6 @@ public interface PersonDao {
 
     public Person createPerson(Person person) throws SQLException;
     public Person findById(int id) throws SQLException;
+
+    public void deletePersonById(int id) throws SQLException;
 }

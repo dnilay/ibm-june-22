@@ -26,6 +26,7 @@ private static Scanner scanner=new Scanner(System.in);
                 System.out.println("1. Create A New Person. ");
                 System.out.println("2. Display All Available Person. ");
                 System.out.println("3. Find Person By ID: ");
+                System.out.println("delete person by id. ");
                 System.out.println("0. Exit. ");
                 System.out.print("Enter Your choice: ");
                 choice=scanner.nextInt();
@@ -62,6 +63,11 @@ private static Scanner scanner=new Scanner(System.in);
                         {
                             System.out.println("id found: "+p);
                         }
+                        break;
+                    case 4:
+                        System.out.println("Enter ID: ");
+                        id= scanner.nextInt();
+                        personDao.deletePersonById(id);
                         break;
                     case 0:
                         System.exit(0);
