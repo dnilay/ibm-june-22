@@ -10,10 +10,20 @@
   	<description></description>
   	<servlet-class>org.example.view.ListLeague</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddLeague</servlet-name>
+  	<display-name>AddLeague</display-name>
+  	<description></description>
+  	<servlet-class>org.example.controller.AddLeague</servlet-class>
+  </servlet>
  
   <servlet-mapping>
   	<servlet-name>ListLeague</servlet-name>
   	<url-pattern>/list_leagues.view</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddLeague</servlet-name>
+  	<url-pattern>/add_leagues.do</url-pattern>
   </servlet-mapping>
 
 </web-app>
