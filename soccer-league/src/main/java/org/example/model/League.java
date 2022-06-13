@@ -11,9 +11,9 @@ import lombok.Setter;
 @Getter
 public class League {
 	
-	private String title;
+	private int year;
 	private String season;
-	private String year;
+	private String title;
 	
 
 }
