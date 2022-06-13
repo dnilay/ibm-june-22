@@ -9,4 +9,6 @@ public interface LeagueDao {
 
 	
 	public List<League>fetchAllLeagues()throws SQLException;
+	
+	public void createLeague(League league)throws SQLException;
 }

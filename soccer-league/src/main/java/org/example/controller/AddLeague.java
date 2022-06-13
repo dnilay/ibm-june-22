@@ -2,6 +2,7 @@ package org.example.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.example.dao.LeagueDao;
+import org.example.dao.LeagueDaoImpl;
 import org.example.model.League;
 
 /**
@@ -21,17 +24,27 @@ public class AddLeague extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doProcess(request, response);
+		try {
+			doProcess(request, response);
+		} catch (ServletException | IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doProcess(request, response);
+		try {
+			doProcess(request, response);
+		} catch (ServletException | IOException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SQLException {
 
 		List<String> errorMessage=null;
 				errorMessage=new ArrayList<String>();
@@ -65,7 +78,10 @@ public class AddLeague extends HttpServlet {
 		}
 		else
 		{
-			request.setAttribute("LEAGUE", new League(iYear,season,title));
+			League league=new League(iYear, season, title);
+			LeagueDao dao=new LeagueDaoImpl();
+			dao.createLeague(league);
+			request.setAttribute("LEAGUE", league);
 			RequestDispatcher view=request.getRequestDispatcher("success_page.view");
 			view.forward(request, response);
 		}

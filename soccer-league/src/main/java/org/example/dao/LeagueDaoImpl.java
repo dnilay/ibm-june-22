@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,7 +17,7 @@ public class LeagueDaoImpl implements LeagueDao {
 	private ResultSet resultSet;
 	private Statement statement;
 	private List<League> list;
-
+	private PreparedStatement preparedStatement;
 	
 	{
 		try {
@@ -39,6 +40,16 @@ public class LeagueDaoImpl implements LeagueDao {
 			list.add(new League(resultSet.getInt("year"), resultSet.getString("season"), resultSet.getString("title")));
 		}
 		return list;
+	}
+
+	@Override
+	public void createLeague(League league) throws SQLException {
+		
+		preparedStatement=connection.prepareStatement("insert into league_table(year,season,title) values(?,?,?)");
+		preparedStatement.setInt(1, league.getYear());
+		preparedStatement.setString(2, league.getSeason());
+		preparedStatement.setString(3, league.getTitle());
+		preparedStatement.executeUpdate();
 	}
 
 }
