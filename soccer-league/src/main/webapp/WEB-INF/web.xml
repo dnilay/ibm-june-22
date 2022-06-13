@@ -16,6 +16,18 @@
   	<description></description>
   	<servlet-class>org.example.controller.AddLeague</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ErrorPage</servlet-name>
+  	<display-name>ErrorPage</display-name>
+  	<description></description>
+  	<servlet-class>org.example.view.ErrorPage</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SuccessPage</servlet-name>
+  	<display-name>SuccessPage</display-name>
+  	<description></description>
+  	<servlet-class>org.example.view.SuccessPage</servlet-class>
+  </servlet>
  
   <servlet-mapping>
   	<servlet-name>ListLeague</servlet-name>
@@ -24,6 +36,14 @@
   <servlet-mapping>
   	<servlet-name>AddLeague</servlet-name>
   	<url-pattern>/add_leagues.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ErrorPage</servlet-name>
+  	<url-pattern>/error_page.view</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SuccessPage</servlet-name>
+  	<url-pattern>/success_page.view</url-pattern>
   </servlet-mapping>
 
 </web-app>
