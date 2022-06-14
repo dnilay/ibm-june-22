@@ -36,4 +36,13 @@ public class StudentDaoImpl implements StudentDao{
         session.close();
         return list;
     }
+
+    @Override
+    public Student getStudentById(int id) {
+        session=sessionFactory.getCurrentSession();
+        session.getTransaction().begin();
+        Student student=session.get(Student.class,id);
+
+        return student;
+    }
 }

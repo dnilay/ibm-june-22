@@ -9,4 +9,6 @@ public interface StudentDao {
     public Student createStudent(Student student);
 
     public List<Student> getAllStudents();
+
+    public Student getStudentById(int id);
 }

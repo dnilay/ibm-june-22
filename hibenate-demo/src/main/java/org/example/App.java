@@ -19,13 +19,22 @@ public class App
     {
        try {
            StudentDao studentDao=new StudentDaoImpl();
-           Student student=studentDao.createStudent(new Student("Marry","Public","marry@email.com"));
-            System.out.println(student+" Created...!");
-           List<Student> list=studentDao.getAllStudents();
+         //  Student student=studentDao.createStudent(new Student("Marry","Public","marry@email.com"));
+           // System.out.println(student+" Created...!");
+         /*  List<Student> list=studentDao.getAllStudents();
            for(Student s:list)
            {
                System.out.println(s);
+           }*/
+           Student student=studentDao.getStudentById(4);
+           if(student==null)
+           {
+               System.out.println("not found");
            }
+           else {
+               System.out.println(student);
+           }
+
        }
        catch (Exception e)
        {
