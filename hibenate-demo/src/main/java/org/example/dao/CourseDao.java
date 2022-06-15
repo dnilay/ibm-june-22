@@ -10,4 +10,6 @@ public interface CourseDao {
     public Course createCourse(Course course);
     public List<Course> getAlCourse();
     public Course findCourseByCourseId(String courseId);
+
+    public void updateCourse(String courseId,Course course);
 }

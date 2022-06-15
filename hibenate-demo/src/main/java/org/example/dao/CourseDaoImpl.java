@@ -56,4 +56,23 @@ public class CourseDaoImpl implements CourseDao{
         }
 
     }
+
+    @Override
+    public void updateCourse(String courseId,Course course) {
+        Course c=findCourseByCourseId(courseId);
+        if (c==null)
+        {
+            System.out.println("no course found by given course_id");
+        }
+        else {
+            session=sessionFactory.getCurrentSession();
+            session.getTransaction().begin();
+            c.setCourseName(course.getCourseName());
+            c.setAuthor(course.getAuthor());
+            session.merge(c);
+            session.getTransaction().commit();
+            System.out.println("update succeed. ");
+        }
+
+    }
 }

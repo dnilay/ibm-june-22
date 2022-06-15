@@ -25,6 +25,7 @@ public class App {
                 System.out.println("1. create a new course.");
                 System.out.println("2. display all available course.");
                 System.out.println("3. find course by course-id. ");
+                System.out.println("4. Update. ");
                 System.out.println("0.exit. ");
                 System.out.print("enter your choice: ");
                 choice= scanner.nextInt();
@@ -71,6 +72,18 @@ public class App {
                             System.out.println(c);
                         }
 
+                        break;
+                    case 4:
+                        System.out.print("enter course id: ");
+                        courseId= scanner.next();
+                        course=new Course();
+                        System.out.print("Enter Course Name: ");
+                        courseName= scanner.next();;
+                        System.out.print("Enter Author Name: ");
+                        authorName= scanner.next();
+                        course.setAuthor(authorName);
+                        course.setCourseName(courseName);
+                        courseDao.updateCourse(courseId,course);
                         break;
                     case 0:
                         System.exit(0);
