@@ -12,4 +12,6 @@ public interface CourseDao {
     public Course findCourseByCourseId(String courseId);
 
     public void updateCourse(String courseId,Course course);
+
+    public void deleteCourse(String courseId);
 }

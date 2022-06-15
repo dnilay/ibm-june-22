@@ -25,7 +25,8 @@ public class App {
                 System.out.println("1. create a new course.");
                 System.out.println("2. display all available course.");
                 System.out.println("3. find course by course-id. ");
-                System.out.println("4. Update. ");
+                System.out.println("4. Update Course. ");
+                System.out.println("5. Delete Course. ");
                 System.out.println("0.exit. ");
                 System.out.print("enter your choice: ");
                 choice= scanner.nextInt();
@@ -84,6 +85,11 @@ public class App {
                         course.setAuthor(authorName);
                         course.setCourseName(courseName);
                         courseDao.updateCourse(courseId,course);
+                        break;
+                    case 5:
+                        System.out.print("enter course id: ");
+                        courseId= scanner.next();
+                        courseDao.deleteCourse(courseId);
                         break;
                     case 0:
                         System.exit(0);
