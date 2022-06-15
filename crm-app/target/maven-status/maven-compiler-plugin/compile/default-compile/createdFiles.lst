@@ -1,0 +1,5 @@
+org\example\dao\CustomerDao.class
+org\example\model\Customer.class
+org\example\factory\MySessionFactory.class
+org\example\controller\CustomerController.class
+org\example\dao\CustomerDaoImpl.class
