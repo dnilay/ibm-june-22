@@ -23,12 +23,6 @@ public class App
         System.out.println(coach.getDailyWorkout());*/
 
         Person person=context.getBean("person",Person.class);
-        Address address=context.getBean("address",Address.class);
-        address.setAddressLine1("Chennai");
-        address.setAddressLine2("India");
-        person.setFirstName("John");
-        person.setLastName("Doe");
-        person.setAddress(address);
         System.out.println(person);
     }
 }

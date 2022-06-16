@@ -2,7 +2,7 @@ package org.example.model;
 
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class Address {
     private String addressLine1;
     private String addressLine2;
