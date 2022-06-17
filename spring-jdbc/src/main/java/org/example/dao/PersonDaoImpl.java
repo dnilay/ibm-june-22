@@ -2,6 +2,7 @@ package org.example.dao;
 
 import org.example.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -14,25 +15,16 @@ import java.util.List;
 @Component(value = "personDao")
 public class PersonDaoImpl implements PersonDao{
 
-    private DataSource dataSource;
+   private JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    public PersonDaoImpl(DataSource dataSource) {
-        this.dataSource = dataSource;
+   @Autowired
+    public PersonDaoImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public List<Person> fetchAllPerson() throws SQLException {
-        Connection connection= dataSource.getConnection();
-        Statement statement=connection.createStatement();
-        ResultSet resultSet= statement.executeQuery("select * from person");
-
-        System.out.println("id\tfirst_name\tlast_name\tage");
-        List<Person> list=new ArrayList<Person>();
-        while (resultSet.next())
-        {
-            list.add(new Person(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getInt(4)));
-        }
-        return list;
+       List<Person> list=jdbcTemplate.query("select * from person",new PersonMapper());
+       return list;
     }
 }
