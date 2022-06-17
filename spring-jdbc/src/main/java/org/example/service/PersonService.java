@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PersonService {
     public List<Person> fetchAllPerson() throws SQLException;
+    public Person getPersonById(int personId);
 }

@@ -22,4 +22,9 @@ public class PersonServiceImpl implements PersonService{
     public List<Person> fetchAllPerson() throws SQLException {
         return personDao.fetchAllPerson();
     }
+
+    @Override
+    public Person getPersonById(int personId) {
+        return personDao.getPersonById(personId);
+    }
 }

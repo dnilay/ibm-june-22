@@ -30,5 +30,15 @@ public class App
             System.out.println(p.getPersonId()+"\t\t"+p.getFirstName()+"\t\t"+p.getLastName()+"\t\t"+p.getAge());
         }
 
+        Person person=personService.getPersonById(800);
+        if(person==null)
+        {
+            System.out.println("no such id found...");
+        }
+        else {
+            System.out.println("found \n"+person);
+        }
+
+
     }
 }
