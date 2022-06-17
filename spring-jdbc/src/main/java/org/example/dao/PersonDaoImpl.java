@@ -9,7 +9,10 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 @Component(value = "personDao")
 public class PersonDaoImpl implements PersonDao{
 
@@ -35,6 +38,7 @@ public class PersonDaoImpl implements PersonDao{
                ps.setInt(1,personId);
            }
        }, new PersonMapper());
+
        if(list.isEmpty())
        {
            return null;
@@ -43,5 +47,12 @@ public class PersonDaoImpl implements PersonDao{
            return list.get(0);
        }
 
+    }
+
+    @Override
+    public Person createPerson(Person person) {
+
+       jdbcTemplate.update("insert into person(person_id,first_name,last_name,age) values(?,?,?,?)",person.getPersonId(),person.getFirstName(),person.getLastName(),person.getAge());
+        return person;
     }
 }

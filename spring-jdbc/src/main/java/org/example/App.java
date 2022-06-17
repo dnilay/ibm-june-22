@@ -24,20 +24,22 @@ public class App
        // ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
         ApplicationContext context=new AnnotationConfigApplicationContext(SpringConfig.class);
         PersonService personService=context.getBean("personService",PersonService.class);
+       Person person=personService.createPerson(new Person(101,"Sachin","Tendulkar",53));
+       System.out.println("Person Created: "+person);
         List<Person> list=personService.fetchAllPerson();
         for(Person p: list)
         {
             System.out.println(p.getPersonId()+"\t\t"+p.getFirstName()+"\t\t"+p.getLastName()+"\t\t"+p.getAge());
         }
 
-        Person person=personService.getPersonById(800);
+       /* Person person=personService.getPersonById(800);
         if(person==null)
         {
             System.out.println("no such id found...");
         }
         else {
             System.out.println("found \n"+person);
-        }
+        }*/
 
 
     }

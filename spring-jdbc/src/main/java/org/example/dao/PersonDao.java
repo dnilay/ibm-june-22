@@ -10,4 +10,6 @@ public interface PersonDao {
     public List<Person> fetchAllPerson() throws SQLException;
 
     public Person getPersonById(int personId);
+
+    public Person createPerson(Person person);
 }

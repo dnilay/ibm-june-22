@@ -27,4 +27,9 @@ public class PersonServiceImpl implements PersonService{
     public Person getPersonById(int personId) {
         return personDao.getPersonById(personId);
     }
+
+    @Override
+    public Person createPerson(Person person) {
+        return personDao.createPerson(person);
+    }
 }
