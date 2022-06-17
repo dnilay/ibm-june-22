@@ -32,4 +32,9 @@ public class PersonServiceImpl implements PersonService{
     public Person createPerson(Person person) {
         return personDao.createPerson(person);
     }
+
+    @Override
+    public Person updatePerson(int personId, Person person) {
+        return personDao.updatePerson(personId,person);
+    }
 }

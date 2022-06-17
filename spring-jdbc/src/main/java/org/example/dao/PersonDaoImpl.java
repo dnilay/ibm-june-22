@@ -55,4 +55,17 @@ public class PersonDaoImpl implements PersonDao{
        jdbcTemplate.update("insert into person(person_id,first_name,last_name,age) values(?,?,?,?)",person.getPersonId(),person.getFirstName(),person.getLastName(),person.getAge());
         return person;
     }
+
+    @Override
+    public Person updatePerson(int personId, Person person) {
+       Person p=getPersonById(personId);
+       if(p!=null)
+       {
+           jdbcTemplate.update("update person set first_name=?,last_name=?,age=? where person_id=?",person.getFirstName(),person.getLastName(),person.getAge(),personId);
+           return person;
+
+       }
+       else
+           return null;
+       }
 }
