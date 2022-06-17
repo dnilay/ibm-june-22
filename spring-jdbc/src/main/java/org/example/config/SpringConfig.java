@@ -5,12 +5,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import javax.sql.DataSource;
+
 @Configuration
 @ComponentScan(basePackages = {"org.example"})
 public class SpringConfig {
 
     @Bean
-    public DriverManagerDataSource dataSource()
+    public DataSource dataSource()
     {
         DriverManagerDataSource driverManagerDataSource=new DriverManagerDataSource();
         driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
