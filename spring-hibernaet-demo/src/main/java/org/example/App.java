@@ -1,9 +1,11 @@
 package org.example;
 
+import org.example.config.SpringConfig;
 import org.example.model.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.logging.XMLFormatter;
@@ -17,10 +19,11 @@ public class App
     public static void main( String[] args )
     {
         try {
-            ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+           // ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+            ApplicationContext context=new AnnotationConfigApplicationContext(SpringConfig.class);
             SessionFactory sessionFactory=context.getBean("sessionFactory",SessionFactory.class);
             Session session= sessionFactory.openSession();
-            Employee employee=new Employee("John","Doe","john@email.com");
+            Employee employee=new Employee("Marry","Public","marry@email.com");
             session.getTransaction().begin();
             session.persist(employee);
             session.getTransaction().commit();
