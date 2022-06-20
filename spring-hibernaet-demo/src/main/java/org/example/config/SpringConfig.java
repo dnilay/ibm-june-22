@@ -35,7 +35,7 @@ public class SpringConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("org.example.model");
         Properties properties=new Properties();
-        properties.put("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
+        properties.put("hibernate.dialect","org.hibernate.dialect.MySQL8Dialect");
         properties.put("hibernate.show_sql","true");
         sessionFactory.setHibernateProperties(properties);
         return sessionFactory;
