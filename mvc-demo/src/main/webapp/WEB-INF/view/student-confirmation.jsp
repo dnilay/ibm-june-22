@@ -11,8 +11,8 @@
 <h2>Student Is Confirmed...</h2>
 <hr/>
 <p>
-First Name:${STUDENT.firstName}
-Last Name:${STUDENT.lastName}
+First Name:${STUDENT.firstName}<br/>
+Last Name:${STUDENT.lastName}<br/>
 Email:${STUDENT.email}
 </p>
 </body>

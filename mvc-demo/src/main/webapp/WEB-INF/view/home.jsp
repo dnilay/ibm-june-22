@@ -9,6 +9,7 @@
 <body>
 <h2>Student Information System...</h2>
 <hr/>
-<a href="showForm">Show Form</a>
+<a href="showForm">Show Form For Student</a><br/>
+<a href="listStudent">List All Available Student</a>
 </body>
 </html>
