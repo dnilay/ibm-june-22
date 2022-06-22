@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Person;
@@ -26,11 +27,18 @@ public class PersonController {
 		model.addAttribute("persons", list);
 		return "list_person";
 	}
+
 	@GetMapping("/showForm")
-	public String showForm(Model theModel)
-	{
-		theModel.addAttribute("person",new Person());
+	public String showForm(Model theModel) {
+		theModel.addAttribute("person", new Person());
 		return "person-form";
 	}
 
+	@PostMapping("/processForm")
+	public String processForm(@ModelAttribute("person") Person thePerson)
+
+	{
+		personService.createPerson(thePerson);	
+		return "redirect:/";
+	}
 }

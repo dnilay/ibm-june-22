@@ -6,5 +6,7 @@ import com.example.demo.entity.Person;
 
 public interface PersonService {
 	List<Person> getAllPersons();
+	
+	Person createPerson(Person person);
 
 }

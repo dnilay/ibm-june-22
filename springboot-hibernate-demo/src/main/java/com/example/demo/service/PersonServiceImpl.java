@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,13 @@ public class PersonServiceImpl implements PersonService {
 	public List<Person> getAllPersons() {
 		
 		return personDao.findAll();
+	}
+
+
+	@Override
+	public Person createPerson(Person person) {
+		person.setPersonId(new Random().nextInt(1000));
+		return personDao.save(person);
 	}
 
 }
