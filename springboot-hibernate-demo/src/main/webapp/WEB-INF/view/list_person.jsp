@@ -11,6 +11,12 @@
 <title>person_list</title>
 </head>
 <body>
+<div class="container">
+<div class="row">
+<h2> Person Management</h2>
+</div>
+<a class="btn btn-primary" href="showForm" role="button">add person</a>
+<hr/>
 <table class="table">
   <thead >
     <tr>
@@ -31,5 +37,6 @@
     </c:forEach>
     </tbody>
     </table>
+    </div>
 </body>
 </html>

@@ -4,26 +4,33 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.dao.PersonDao;
 import com.example.demo.entity.Person;
+import com.example.demo.service.PersonService;
 
 @Controller
 public class PersonController {
 
-	private final PersonDao personDao;
+	private final PersonService personService;
 
-	public PersonController(PersonDao personDao) {
-
-		this.personDao = personDao;
+	public PersonController(PersonService personService) {
+		super();
+		this.personService = personService;
 	}
 
-	@RequestMapping
+	@GetMapping
 	public String listPerson(Model model) {
-		List<Person> list = personDao.findAll();
+		List<Person> list = personService.getAllPersons();
 		model.addAttribute("persons", list);
 		return "list_person";
+	}
+	@GetMapping("/showForm")
+	public String showForm(Model theModel)
+	{
+		theModel.addAttribute("person",new Person());
+		return "person-form";
 	}
 
 }
