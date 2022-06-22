@@ -28,8 +28,15 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public Person createPerson(Person person) {
-		person.setPersonId(new Random().nextInt(1000));
+		//person.setPersonId(new Random().nextInt(1000));
 		return personDao.save(person);
+	}
+
+
+	@Override
+	public Person getPersonById(int personId) {
+		
+		return personDao.getById(personId);
 	}
 
 }

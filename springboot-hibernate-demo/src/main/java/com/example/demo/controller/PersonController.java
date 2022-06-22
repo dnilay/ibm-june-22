@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Person;
 import com.example.demo.service.PersonService;
@@ -40,5 +41,12 @@ public class PersonController {
 	{
 		personService.createPerson(thePerson);	
 		return "redirect:/";
+	}
+	@GetMapping("/showFormForUpdate")
+	public String showFormForUpdate(@RequestParam("personId") int personId,Model theModel)
+	{
+		Person person=personService.getPersonById(personId);
+		theModel.addAttribute("person",person);
+		return "person-form";
 	}
 }
