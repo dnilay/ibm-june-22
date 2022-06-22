@@ -10,5 +10,7 @@ public interface PersonService {
 	Person createPerson(Person person);
 	
 	Person getPersonById(int personId);
+	
+	void deletePerson(int personId);
 
 }

@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Person;
@@ -48,5 +50,12 @@ public class PersonController {
 		Person person=personService.getPersonById(personId);
 		theModel.addAttribute("person",person);
 		return "person-form";
+	}
+	@RequestMapping("/deletePerson")
+	public String deletePerson(@RequestParam("personId") int personId)
+	{
+		personService.deletePerson(personId);
+		return "redirect:/";
+		
 	}
 }
