@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.entity.Person;
 
@@ -9,7 +10,7 @@ public interface PersonService {
 	
 	Person createPerson(Person person);
 	
-	Person getPersonById(int personId);
+	Optional<Person> getPersonById(int personId);
 	
 	void deletePerson(int personId);
 

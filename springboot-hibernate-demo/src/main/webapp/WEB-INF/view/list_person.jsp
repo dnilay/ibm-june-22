@@ -20,7 +20,9 @@
 			<h2>Person Management</h2>
 		</div>
 		<a class="btn btn-primary" href="showForm" role="button">add
-			person</a>
+			person</a> 
+		<a class="btn btn-primary" href="showSearchForm" role="button">
+			search person</a>
 		<hr />
 		<table class="table">
 			<thead>
@@ -46,14 +48,9 @@
 						<td>${person.firstName}</td>
 						<td>${person.lastName}</td>
 						<td>${person.age}</td>
-						<td>
-							
-							<a href="${updateLink}">Update</a>
-						</td>
-						<td>
-							
-							<a href="${deleteLink}">Delete</a>
-						</td>
+						<td><a href="${updateLink}">Update</a>|<a
+							href="${deleteLink}">Delete</a></td>
+
 					</tr>
 				</c:forEach>
 			</tbody>

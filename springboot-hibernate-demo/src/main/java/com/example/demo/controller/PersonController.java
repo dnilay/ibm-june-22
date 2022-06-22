@@ -1,10 +1,10 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,21 +41,37 @@ public class PersonController {
 	public String processForm(@ModelAttribute("person") Person thePerson)
 
 	{
-		personService.createPerson(thePerson);	
+		personService.createPerson(thePerson);
 		return "redirect:/";
 	}
+
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("personId") int personId,Model theModel)
-	{
-		Person person=personService.getPersonById(personId);
-		theModel.addAttribute("person",person);
+	public String showFormForUpdate(@RequestParam("personId") int personId, Model theModel) {
+		Person person = personService.getPersonById(personId).get();
+		theModel.addAttribute("person", person);
 		return "person-form";
 	}
+
 	@RequestMapping("/deletePerson")
-	public String deletePerson(@RequestParam("personId") int personId)
-	{
+	public String deletePerson(@RequestParam("personId") int personId) {
 		personService.deletePerson(personId);
 		return "redirect:/";
-		
+
+	}
+
+	@GetMapping("/showSearchForm")
+	public String showSearchForm() {
+		return "search-form";
+	}
+
+	@PostMapping("/searchById")
+	public String searchById(@RequestParam("personId") int personId, Model model) {
+		Optional<Person> person = personService.getPersonById(personId);
+		if (person.isEmpty()) {
+			model.addAttribute("person", new Person());
+		} else {
+			model.addAttribute("person", person.get());
+		}
+		return "success";
 	}
 }

@@ -14,18 +14,43 @@
 <title>add_person</title>
 </head>
 <body>
-	<div>
-		<form:form action="processForm" method="post" modelAttribute="person">
-		<form:hidden path="personId" />
-			<label>First Name</label>
-			<form:input path="firstName" />
-			<br />
-			<label>Last Name</label>
-			<form:input path="lastName" />
-			<br />
-			<label>Age</label>
-			<form:input path="age" />
-			<input type="submit">
+
+		<div id="container">
+		<h3>Save Person</h3>
+	<hr/>
+		<form:form action="processForm" modelAttribute="person" method="POST">
+
+			<!-- need to associate this data with customer id -->
+			<form:hidden path="personId" />
+					
+			<table>
+				<tbody>
+					<tr>
+						<td><label>First name:</label></td>
+						<td><form:input path="firstName" /></td>
+					</tr>
+				
+					<tr>
+						<td><label>Last name:</label></td>
+						<td><form:input path="lastName" /></td>
+					</tr>
+
+					<tr>
+						<td><label>Age:</label></td>
+						<td><form:input path="age" /></td>
+					</tr>
+
+					<tr>
+						<td><label></label></td>
+						<td><input type="submit" value="Save" class="save" /></td>
+						<td>
+				<a href="/">back</a>
+				</td>
+				</tr>
+				</tbody>
+			</table>
+		
+		
 		</form:form>
 	</div>
 </body>

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -30,14 +31,14 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Override
-	public Person getPersonById(int personId) {
+	public Optional<Person> getPersonById(int personId) {
 
-		return personDao.getById(personId);
+		return personDao.findById(personId);
 	}
 
 	@Override
 	public void deletePerson(int personId) {
-		personDao.delete(getPersonById(personId));
+		personDao.delete(getPersonById(personId).get());
 
 	}
 
