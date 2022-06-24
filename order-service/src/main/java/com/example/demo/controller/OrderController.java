@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,12 @@ public class OrderController {
 	public ResponseEntity<List<OrderEntity>> getOrders()
 	{
 		return ResponseEntity.ok(orderService.getOrders());
+	}
+	
+	@GetMapping("/{orderId}")
+	public ResponseEntity<OrderEntity> findOrderById(@PathVariable("orderId") int orderId)
+	{
+		return ResponseEntity.ok(orderService.findOrderById(orderId));
 	}
 	
 

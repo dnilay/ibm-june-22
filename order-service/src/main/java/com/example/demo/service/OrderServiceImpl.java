@@ -32,4 +32,11 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.getOrders();
 	}
 
+
+	@Override
+	public OrderEntity findOrderById(int orderId) {
+		// TODO Auto-generated method stub
+		return orderDao.findOrderById(orderId);
+	}
+
 }

@@ -37,4 +37,10 @@ public class OrderDaoImpl implements OrderDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public OrderEntity findOrderById(int orderId) {
+		OrderEntity o = entityManager.find(OrderEntity.class, orderId);
+		return o;
+	}
+
 }
