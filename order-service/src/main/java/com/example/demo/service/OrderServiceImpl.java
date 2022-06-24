@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.OrderDao;
@@ -21,6 +23,13 @@ public class OrderServiceImpl implements OrderService {
 	public OrderEntity createOrder(OrderEntity orderEntity) {
 		// TODO Auto-generated method stub
 		return orderDao.createOrder(orderEntity);
+	}
+
+
+	@Override
+	public List<OrderEntity> getOrders() {
+		// TODO Auto-generated method stub
+		return orderDao.getOrders();
 	}
 
 }
