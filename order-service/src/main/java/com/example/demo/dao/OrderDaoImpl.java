@@ -40,7 +40,9 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	@Transactional
 	public OrderEntity findOrderById(int orderId) {
+
 		OrderEntity o = entityManager.find(OrderEntity.class, orderId);
+
 		System.out.println(o);
 		return o;
 	}
