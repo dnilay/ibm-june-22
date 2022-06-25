@@ -53,4 +53,12 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.findOrderByName(orderName);
 	}
 
+
+	@Override
+	public void deleteById(int orderid) {
+		// TODO Auto-generated method stub
+		orderDao.deleteById(orderid);
+		
+	}
+
 }

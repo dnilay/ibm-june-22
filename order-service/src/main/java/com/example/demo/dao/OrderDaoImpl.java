@@ -49,8 +49,8 @@ public class OrderDaoImpl implements OrderDao {
 
 	@Override
 	@Transactional
-	public OrderEntity updateOrderByOrderId(int orderId,OrderEntity orderEntity) {
-		OrderEntity o=findOrderById(orderId);
+	public OrderEntity updateOrderByOrderId(int orderId, OrderEntity orderEntity) {
+		OrderEntity o = findOrderById(orderId);
 		o.setOrderName(orderEntity.getOrderName());
 		o.setOrderPrice(orderEntity.getOrderPrice());
 		entityManager.merge(o);
@@ -60,10 +60,20 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	@Transactional
 	public List<OrderEntity> findOrderByName(String orderName) {
-		TypedQuery<OrderEntity> query=entityManager.createQuery("SELECT O FROM OrderEntity O WHERE O.orderName=:oName",OrderEntity.class);
+		TypedQuery<OrderEntity> query = entityManager
+				.createQuery("SELECT O FROM OrderEntity O WHERE O.orderName=:oName", OrderEntity.class);
 		query.setParameter("oName", orderName);
-		
+
 		return query.getResultList();
+	}
+
+	@Override
+	@Transactional
+	public void deleteById(int orderid) {
+		// TODO Auto-generated method stub
+		OrderEntity o = entityManager.find(OrderEntity.class, orderid);
+		entityManager.remove(o);
+
 	}
 
 }
