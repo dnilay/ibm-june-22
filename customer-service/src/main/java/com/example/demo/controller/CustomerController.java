@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +42,23 @@ public class CustomerController {
 		response.setEmail(tempCustomer.getEmail());
 		response.setCustomerId(tempCustomer.getCustomerId());
 		return ResponseEntity.status(HttpStatus.OK).body(response);
+	}
+	
+	@GetMapping
+	public ResponseEntity<?> getAllCustomers()
+	{
+		List<Customer> customers=customerService.getAllCustomers();
+		List<CustomerResponse> customerResponses=new ArrayList<>();
+		for(Customer tempCustomer:customers)
+		{
+			CustomerResponse response = new CustomerResponse();
+			response.setFirstName(tempCustomer.getFirstName());
+			response.setLastName(tempCustomer.getLastName());
+			response.setEmail(tempCustomer.getEmail());
+			response.setCustomerId(tempCustomer.getCustomerId());
+			customerResponses.add(response);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(customerResponses);
 	}
 
 }
