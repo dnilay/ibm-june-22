@@ -44,6 +44,10 @@ public class OrderEntity {
 	public void setOrderPrice(double orderPrice) {
 		this.orderPrice = orderPrice;
 	}
+	@Override
+	public String toString() {
+		return "OrderEntity [orderId=" + orderId + ", orderName=" + orderName + ", orderPrice=" + orderPrice + "]";
+	}
 	
 	
 
