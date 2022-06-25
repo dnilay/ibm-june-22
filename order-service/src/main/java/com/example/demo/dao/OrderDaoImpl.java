@@ -57,4 +57,13 @@ public class OrderDaoImpl implements OrderDao {
 		return o;
 	}
 
+	@Override
+	@Transactional
+	public List<OrderEntity> findOrderByName(String orderName) {
+		TypedQuery<OrderEntity> query=entityManager.createQuery("SELECT O FROM OrderEntity O WHERE O.orderName=:oName",OrderEntity.class);
+		query.setParameter("oName", orderName);
+		
+		return query.getResultList();
+	}
+
 }

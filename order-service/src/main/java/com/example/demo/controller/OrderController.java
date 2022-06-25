@@ -76,6 +76,11 @@ public class OrderController {
 			return ResponseEntity.status(HttpStatus.OK).body(o);
 		}
 	}
+	@GetMapping("/name/{orderName}")
+	public ResponseEntity<?> getOrderByName(@PathVariable("orderName") String orderName)
+	{
+		return ResponseEntity.status(HttpStatus.OK).body(orderService.findOrderByName(orderName));
+	}
 	
 	
 

@@ -13,5 +13,6 @@ public interface OrderDao {
 	OrderEntity findOrderById(int orderId);
 	
 	OrderEntity updateOrderByOrderId(int orderId,OrderEntity orderEntity);
+	List<OrderEntity> findOrderByName(String orderName);
 
 }
