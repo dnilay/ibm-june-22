@@ -39,4 +39,11 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.findOrderById(orderId);
 	}
 
+
+	@Override
+	public OrderEntity updateOrderByOrderId(int orderId,OrderEntity orderEntity) {
+		// TODO Auto-generated method stub
+		return orderDao.updateOrderByOrderId(orderId, orderEntity);
+	}
+
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class OrderController {
 	@ExceptionHandler
 	public ResponseEntity<?> handleNumberFormatException(NumberFormatException e)
 	{
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("please provide valid order-id");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 	}
 
 	@PostMapping
@@ -48,7 +49,7 @@ public class OrderController {
 		try {
 			orderEntity = orderService.findOrderById(orderId);
 
-		} catch (Exception e) {
+		} catch (NumberFormatException e) {
 			throw new NumberFormatException("please provide valid order-id");
 		}
 		if (orderEntity == null) {
@@ -58,5 +59,24 @@ public class OrderController {
 		}
 
 	}
+	
+	@PutMapping("/{orderId}")
+	public ResponseEntity<?> updateOrder(@PathVariable("orderId") int orderId,@RequestBody OrderEntity orderEntity)
+	{
+		OrderEntity o = null;
+		try {
+			o = orderService.updateOrderByOrderId(orderId, orderEntity);
+
+		} catch (NumberFormatException e) {
+			throw new NumberFormatException("please provide valid order-id");
+		}
+		if (orderEntity == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("order with orderid " + orderId + " not found");
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).body(o);
+		}
+	}
+	
+	
 
 }

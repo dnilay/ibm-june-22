@@ -10,4 +10,5 @@ public interface OrderService {
 	List<OrderEntity> getOrders();
 
 	OrderEntity findOrderById(int orderId);
+	OrderEntity updateOrderByOrderId(int orderId,OrderEntity orderEntity);
 }

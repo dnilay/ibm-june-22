@@ -11,5 +11,7 @@ public interface OrderDao {
 	List<OrderEntity> getOrders();
 
 	OrderEntity findOrderById(int orderId);
+	
+	OrderEntity updateOrderByOrderId(int orderId,OrderEntity orderEntity);
 
 }

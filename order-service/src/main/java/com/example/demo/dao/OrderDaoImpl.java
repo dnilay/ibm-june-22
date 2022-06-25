@@ -47,4 +47,14 @@ public class OrderDaoImpl implements OrderDao {
 		return o;
 	}
 
+	@Override
+	@Transactional
+	public OrderEntity updateOrderByOrderId(int orderId,OrderEntity orderEntity) {
+		OrderEntity o=findOrderById(orderId);
+		o.setOrderName(orderEntity.getOrderName());
+		o.setOrderPrice(orderEntity.getOrderPrice());
+		entityManager.merge(o);
+		return o;
+	}
+
 }
