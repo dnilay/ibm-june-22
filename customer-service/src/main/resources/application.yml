@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: customer-ws
+  datasource:
+    url: jdbc:h2:mem:testDB
+    username: sa
+    password: sa
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+server:
+  port: 8082
