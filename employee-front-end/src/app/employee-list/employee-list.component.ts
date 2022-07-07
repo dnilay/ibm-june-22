@@ -25,4 +25,9 @@ private router: Router ) {}
   employeeDetails(id: number){
     this.router.navigate(['details', id]);
   }
+  deleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id)
+      .subscribe();
+        
+  }
 }
