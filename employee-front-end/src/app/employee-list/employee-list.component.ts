@@ -12,7 +12,7 @@ import { EmployeeService } from '../employee.service';
 export class EmployeeListComponent implements OnInit {
   employees: Observable<Employee[]> | undefined;
   constructor(private employeeService: EmployeeService,
- ) {}
+private router: Router ) {}
 
   ngOnInit(): void {
     this.reloadData();
@@ -21,5 +21,8 @@ export class EmployeeListComponent implements OnInit {
   reloadData() {
     this.employees = this.employeeService.getEmployeesList();
    
+  }
+  employeeDetails(id: number){
+    this.router.navigate(['details', id]);
   }
 }

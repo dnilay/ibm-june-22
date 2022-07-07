@@ -1,5 +1,5 @@
 export class Employee {
-    id: number | undefined
+    id: number =0;
     firstName: string | undefined;
     lastName: string | undefined;
     emailId: string|undefined;
