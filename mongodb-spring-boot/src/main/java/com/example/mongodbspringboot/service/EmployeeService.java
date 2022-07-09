@@ -10,4 +10,6 @@ public interface EmployeeService {
     List<Employee> fetchAllEmployees();
 
     Employee findEmployeeById(int employeeId);
+
+    Employee updateEmployeeById(int employeeId,Employee employee);
 }

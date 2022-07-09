@@ -25,4 +25,16 @@ public class EmployeeServiceImpl implements EmployeeService{
     public Employee findEmployeeById(int employeeId) {
         return employeeDao.findById(employeeId).get();
     }
+
+    @Override
+    public Employee updateEmployeeById(int employeeId, Employee employee) {
+        Employee tempEmployee=employeeDao.findById(employeeId).get();
+
+        tempEmployee.setFirstName(employee.getFirstName());
+        tempEmployee.setLastName(employee.getLastName());
+        tempEmployee.setEmail(employee.getEmail());
+       
+        employeeDao.save(tempEmployee);
+        return tempEmployee;
+    }
 }
